@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_app/layout/add_task_bottom_sheet.dart';
-
+import 'package:todo_app/modules/tasks_list/add_task_bottom_sheet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../modules/settings/sittings.dart';
 import '../modules/tasks_list/tasks_list.dart';
 
@@ -19,10 +19,11 @@ class _HomeLayoutState extends State<HomeLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ToDo'),
+        title: Text(AppLocalizations.of(context)!.todo),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+
         shape: StadiumBorder(
           side: BorderSide(
               color: Theme
@@ -38,6 +39,10 @@ class _HomeLayoutState extends State<HomeLayout> {
           ShowAddTaskBottomSheet();
         },
         child: Icon(Icons.add, color: Colors.white),
+
+
+
+
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
@@ -61,7 +66,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-  List<Widget> tabs = [TasksList(), settingsTab()];
+  List<Widget> tabs = [TaskListTab(), SettingTab()];
 
   void ShowAddTaskBottomSheet() {
     showModalBottomSheet(context: context, builder: (context) {
