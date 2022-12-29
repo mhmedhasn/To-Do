@@ -22,7 +22,6 @@ class TaskItem extends StatelessWidget {
               borderRadius:BorderRadius.only(topLeft: Radius.circular(15),bottomLeft: Radius.circular(15)),
               onPressed: (context) {
                 deleteTaskeToFireStore(task.id);
-
               },
 
               backgroundColor: Colors.red,
@@ -34,7 +33,7 @@ class TaskItem extends StatelessWidget {
             SlidableAction(
               borderRadius:BorderRadius.only(topLeft: Radius.circular(15),bottomLeft: Radius.circular(15)),
               onPressed: (context) {
-
+                print("____________");
               },
               backgroundColor: Colors.blue,
               foregroundColor: Colors.white,
@@ -98,5 +97,8 @@ class TaskItem extends StatelessWidget {
         ),
       ),
     );
+
   }
+
+
 }
