@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/modules/tasks_list/edit_task_screen.dart';
 import 'package:todo_app/shared/styles/my_theme.dart';
 import 'layout/home_layout.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'shared/styles/my_provider.dart';
+import 'my_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
@@ -15,8 +16,7 @@ void main()async {
 }
 
 class MyApp extends StatelessWidget {
-
- late MyProvider provider;
+  late MyProvider provider;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,13 @@ class MyApp extends StatelessWidget {
       locale: Locale(provider.language),
       debugShowCheckedModeBanner: false,
       initialRoute: HomeLayout.routName,
-      routes: {HomeLayout.routName: (context) => HomeLayout()},
+      routes: {
+        HomeLayout.routName: (context) => HomeLayout(),
+        // edit_task.routName: (context) =>  edit_task(),
+      },
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
-      themeMode:provider.thMode ,
+      themeMode: provider.thMode,
     );
   }
 }

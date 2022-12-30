@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/modules/settings/language_bottom_sheet.dart';
 import 'package:todo_app/modules/settings/theme_bottom_sheet.dart';
-import 'package:todo_app/shared/styles/my_provider.dart';
+import 'package:todo_app/my_provider.dart';
 
 
 class SettingTab extends StatelessWidget {

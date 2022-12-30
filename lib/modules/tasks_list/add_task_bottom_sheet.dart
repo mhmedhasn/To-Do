@@ -13,7 +13,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
   GlobalKey<FormState> key1 = GlobalKey<FormState>();
   var titleController = TextEditingController();
   var descriptionController = TextEditingController();
-  DateTime SelectedDate = DateTime.now();
+  static DateTime SelectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {

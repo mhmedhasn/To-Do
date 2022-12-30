@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/Task1.dart';
 
-class edit_screen extends StatelessWidget {
+class edit_screen_____ extends StatelessWidget {
   Task task;
-  edit_screen(this.task);
+  edit_screen_____(this.task);
   @override
   Widget build(BuildContext context) {
     double height=MediaQuery.of(context).size.height;
