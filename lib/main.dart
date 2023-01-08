@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       initialRoute: HomeLayout.routName,
       routes: {
         HomeLayout.routName: (context) => HomeLayout(),
-        // edit_task.routName: (context) =>  edit_task(),
+        edit_task.routName: (context) =>  edit_task(),
       },
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,

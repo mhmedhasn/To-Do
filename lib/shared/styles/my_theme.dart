@@ -6,11 +6,12 @@ class MyThemeData {
   static Color colorWhite = Color.fromARGB(255, 248, 248, 248);
   static Color colorBlueDark = Color.fromARGB(255, 20, 26, 46);
   static Color colorGrey = Color.fromARGB(255, 158, 158, 158);
-  //_____________________________________________________________//
-  static Color colorblue2 = Color.fromARGB(255, 93, 156, 236);
-  static Color colorYalow = Color.fromARGB(255, 20, 25, 34);
-  static Color colorRed = Color.fromARGB(255, 166, 10, 34);
 
+  //_____________________________________________________________//
+  static Color colorRed = Color.fromARGB(105, 121, 191, 200);
+  static Color colorblak_d_m = Color.fromARGB(255, 19, 43, 65);
+  static Color colorYalow = Color.fromARGB(255, 15, 48, 73);
+  static Color color4 = Color.fromARGB(255, 93, 156, 236);
   static ThemeData lightTheme = ThemeData(
     primaryColor: MyThemeData.colorblue,
     colorScheme: ColorScheme(
@@ -22,7 +23,7 @@ class MyThemeData {
         error: colorRed,
         onError: colorgreen,
         background: Colors.transparent,
-        onBackground:colorBlueDark ,
+        onBackground: colorBlueDark,
         surface: Colors.grey,
         onSurface: colorBlueDark),
     //_____________________________________________________________//
@@ -62,38 +63,49 @@ class MyThemeData {
   //_________________________________________________________________________________________________//
   //_________________________________________________________________________________________________//
 
+  // brightness: Brightness.light,
+  // primary: colorblue,
+  // onPrimary: colorWhite,
+  // secondary: colorgreen,
+  // onSecondary: colorblue,
+  // error: colorRed,
+  // onError: colorgreen,
+  // background: Colors.transparent,
+  // onBackground:colorBlueDark ,
+  // surface: Colors.grey,
+  // onSurface: colorBlueDark),
   static ThemeData darkTheme = ThemeData(
       primaryColor: MyThemeData.colorYalow,
       colorScheme: ColorScheme(
           brightness: Brightness.dark,
-          primary: colorblue2,
-          onPrimary: colorBlueDark,
-          secondary: colorYalow,
+          primary: colorYalow,
+          onPrimary: colorblak_d_m,
+          secondary: colorRed,
           onSecondary: colorBlueDark,
           error: colorRed,
           onError: colorgreen,
-          background: Colors.transparent,
+          background: Colors.black26,
           onBackground: colorBlueDark,
-          surface: Colors.grey,
+          surface: Colors.black12,
           onSurface: colorWhite),
       //_____________________________________________________________//
 
       appBarTheme: AppBarTheme(
-        color: Colors.black,
+        color: color4,
         iconTheme: IconThemeData(color: MyThemeData.colorWhite),
         centerTitle: true,
         elevation: 0.0,
       ),
       //_____________________________________________________________//
 
-      scaffoldBackgroundColor: Colors.transparent,
+      scaffoldBackgroundColor: colorblak_d_m,
       //_____________________________________________________________//
 
       textTheme: TextTheme(
         headline1: TextStyle(
-            fontSize: 30, fontWeight: FontWeight.bold, color: colorWhite),
+            fontSize: 20, fontWeight: FontWeight.bold, color: colorWhite),
         subtitle1: TextStyle(
-            fontSize: 25, fontWeight: FontWeight.normal, color: colorWhite),
+            fontSize: 18, fontWeight: FontWeight.normal, color: colorWhite),
         subtitle2: TextStyle(
             fontSize: 20, fontWeight: FontWeight.bold, color: colorYalow),
       ),
@@ -106,5 +118,5 @@ class MyThemeData {
       //_____________________________________________________________//
 
       bottomSheetTheme:
-          BottomSheetThemeData(backgroundColor: MyThemeData.colorGrey));
+          BottomSheetThemeData(backgroundColor: MyThemeData.colorRed));
 }

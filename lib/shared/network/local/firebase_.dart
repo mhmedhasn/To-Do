@@ -33,8 +33,6 @@ Future<void> updateTaskToFireStore(Task task) {
   return getTaskCollection().doc(task.id).update(task.toJson());
 }
 
-
-
 void isDone(Task task) {
   CollectionReference todoRef = getTaskCollection();
 

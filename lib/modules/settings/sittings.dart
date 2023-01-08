@@ -17,7 +17,7 @@ class SettingTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(AppLocalizations.of(context)!.todo,style: Theme.of(context).textTheme.subtitle1),
+          Text(AppLocalizations.of(context)!.language,style: Theme.of(context).textTheme.subtitle1),
           InkWell(
             onTap: () {
               ButtonSheet('lang', context);
@@ -37,7 +37,7 @@ class SettingTab extends StatelessWidget {
             ),
           ),
           SizedBox(height: 15),
-          Text(AppLocalizations.of(context)!.todo,style: Theme.of(context).textTheme.subtitle1),
+          Text(AppLocalizations.of(context)!.mode,style: Theme.of(context).textTheme.subtitle1),
           InkWell(
             onTap: () {
               ButtonSheet('mode', context);
@@ -49,8 +49,8 @@ class SettingTab extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Theme.of(context).primaryColor)
               ),
-              child: Text(provider.thMode== ThemeMode.light? AppLocalizations.of(context)!.todo:
-              AppLocalizations.of(context)!.todo,
+              child: Text(provider.thMode== ThemeMode.light? AppLocalizations.of(context)!.light:
+              AppLocalizations.of(context)!.dark,
                   style:Theme.of(context).textTheme.subtitle2?.copyWith(
                       color:provider.thMode==ThemeMode.light? Colors.black54
                           :Colors.white54

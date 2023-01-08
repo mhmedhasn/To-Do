@@ -1,6 +1,21 @@
 {
     "todo":"ToDo",
     "light":"light",
-    "dark":"dark"
+    "dark":"dark",
+    "isDone":"is done",
+    "language":"Language",
+    "mode":"Mode",
+    "addNewTask":"Add New Task",
+    "enterYourTaskTitle":"Enter your task title",
+    "enterYourTaskDetails":"Enter your task details",
+    "selectTime":"Select Time",
+    "delete":"Delete",
+    "edit":"Edit",
+    "editTask":"Edit Task",
+    "thetaskwasaddedsuccessfully":"The task was added successfully",
+    "ok":"Ok",
+    "en":"en",
+    "please":"please"
+
 
 }

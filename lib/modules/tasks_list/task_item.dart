@@ -4,6 +4,7 @@ import 'package:todo_app/models/Task1.dart';
 import 'package:todo_app/modules/tasks_list/edit_task_screen.dart';
 import 'package:todo_app/shared/network/local/firebase_.dart';
 import 'package:todo_app/shared/styles/my_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TaskItem extends StatelessWidget {
   Task task;
@@ -17,35 +18,32 @@ class TaskItem extends StatelessWidget {
       child: Slidable(
         startActionPane: ActionPane(
           motion: StretchMotion(),
-          extentRatio: 1 / 3,
+          extentRatio: 1 /2.5,
           children: [
-            // A SlidableAction can have an icon and/or a label.
             SlidableAction(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  bottomLeft: Radius.circular(15)),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(0), bottomLeft: Radius.circular(0)),
               onPressed: (context) {
                 deleteTaskeToFireStore(task.id);
               },
               backgroundColor: Colors.red,
               foregroundColor: Colors.white,
               icon: Icons.delete,
-              label: 'Delete',
+              label: AppLocalizations.of(context)!.delete,
               autoClose: false,
             ),
+
             SlidableAction(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(15),
                   bottomLeft: Radius.circular(15)),
               onPressed: (context) {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => edit_task(task),
-                ));
+                Navigator.of(context).pushNamed(edit_task.routName,arguments:task);
               },
               backgroundColor: Colors.blue,
               foregroundColor: Colors.white,
               icon: Icons.edit,
-              label: 'edit',
+              label: AppLocalizations.of(context)!.edit,
+
             ),
           ],
         ),
@@ -88,7 +86,7 @@ class TaskItem extends StatelessWidget {
                   isDone(task);
 
                 },
-                child: task.isDone?Text('is done',style: TextStyle(color:Colors.green,fontWeight: FontWeight.bold,fontSize: 16 ),):Container(
+                child: task.isDone?Text(AppLocalizations.of(context)!.isDone,style: TextStyle(color:Colors.green,fontWeight: FontWeight.bold,fontSize: 16 ),):Container(
                     padding: EdgeInsets.symmetric(horizontal: 12),
                     decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,

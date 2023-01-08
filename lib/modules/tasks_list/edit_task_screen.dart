@@ -2,22 +2,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/Task1.dart';
 import 'package:todo_app/my_provider.dart';
+import 'package:todo_app/shared/network/local/firebase_.dart';
 import 'package:todo_app/shared/styles/my_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class edit_task extends StatelessWidget {
   static const String routName = 'edit_task';
-  Task task;
 
-  edit_task(this.task);
+  late Task task;
+  var formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    task=ModalRoute.of(context)!.settings.arguments as Task;
-    var formkey = GlobalKey<FormState>();
+    task = ModalRoute.of(context)!.settings.arguments as Task;
     var midiaQuery = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Edit task todo'),
+        title: Text(
+            "${AppLocalizations.of(context)!.editTask} ${AppLocalizations.of(context)!.todo}"),
         elevation: 0.0,
         backgroundColor: MyThemeData.colorblue,
         centerTitle: false,
@@ -42,7 +45,7 @@ class edit_task extends StatelessWidget {
                   color: MyThemeData.colorWhite,
                   child: Column(
                     children: [
-                      Text('Edit Task',
+                      Text(AppLocalizations.of(context)!.editTask,
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold)),
                       Form(
@@ -55,13 +58,17 @@ class edit_task extends StatelessWidget {
                               TextFormField(
                                 validator: (value) {
                                   if (value != null && value.isEmpty) {
-                                    return 'please enter your task title';
+                                    return '${AppLocalizations.of(context)!.please}${AppLocalizations.of(context)!.enterYourTaskTitle}';
                                   }
                                   return null;
                                 },
                                 initialValue: task.title,
+                                onChanged: (value) {
+                                  task.title = value;
+                                },
                                 decoration: InputDecoration(
-                                  label: Text('enter your task title'),
+                                  label: Text(AppLocalizations.of(context)!
+                                      .enterYourTaskTitle),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: BorderSide(
@@ -74,17 +81,24 @@ class edit_task extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 20,),
+                              SizedBox(
+                                height: 20,
+                              ),
                               TextFormField(
                                 validator: (value) {
                                   if (value != null && value.isEmpty) {
-                                    return 'please enter your task title';
+                                    return AppLocalizations.of(context)!
+                                        .enterYourTaskDetails;
                                   }
                                   return null;
                                 },
+                                onChanged: (value) {
+                                  task.description = value;
+                                },
                                 initialValue: task.description,
                                 decoration: InputDecoration(
-                                  label: Text('enter your task details'),
+                                  label: Text(AppLocalizations.of(context)!
+                                      .enterYourTaskDetails),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: BorderSide(
@@ -97,7 +111,9 @@ class edit_task extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 20,),
+                              SizedBox(
+                                width: 20,
+                              ),
                               InkWell(
                                 onTap: () {
                                   sheewDateTime_edit(context);
@@ -106,11 +122,16 @@ class edit_task extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Select time',
+                                    Text(
+                                        AppLocalizations.of(context)!
+                                            .selectTime,
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline1),
-                                    Text('${task.date}',
+                                    Text(
+                                        DateTime.fromMillisecondsSinceEpoch(
+                                                task.date)
+                                            .toString(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline1),
@@ -123,7 +144,12 @@ class edit_task extends StatelessWidget {
                                   margin: EdgeInsets.only(left: 30, right: 30),
                                   width: double.infinity,
                                   child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      updateTaskToFireStore(task).then((value) {
+                                        print("___________________________");
+                                      });
+                                      Navigator.pop(context);
+                                    },
                                     child: Text('data'),
                                   ),
                                 ),
@@ -144,19 +170,16 @@ class edit_task extends StatelessWidget {
     );
   }
 
-
-
-
   DateTime SelectedDate = DateTime.now();
+
   void sheewDateTime_edit(context) async {
     DateTime? holdsdate = await showDatePicker(
         context: context,
-        initialDate:SelectedDate ,
+        initialDate: SelectedDate,
         firstDate: DateTime.now(),
         lastDate: DateTime.now().add(Duration(days: 365)));
     if (holdsdate == null) return;
-    if(holdsdate!=null)
-
-    SelectedDate = holdsdate;
+    if (holdsdate != null) SelectedDate = holdsdate;
+    task.date = SelectedDate.millisecondsSinceEpoch;
   }
 }

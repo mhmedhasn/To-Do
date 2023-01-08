@@ -1,5 +1,20 @@
 {
     "todo":"تودو",
     "light":"ضوء",
-    "dark":"داكن"
+    "dark":"داكن",
+    "isDone":"تم",
+    "language":"اللغة",
+    "mode":"المظهر",
+    "addNewTask":"اضافة مهمة جديدة",
+    "enterYourTaskTitle":"أدخل عنوان مهمتك",
+    "enterYourTaskDetails":"أدخل تفاصيل مهمتك",
+    "selectTime":"تحديد الوقت",
+    "delete":"حذف",
+    "edit":"تعديل",
+    "editTask":"تعديل المهمة",
+    "thetaskwasaddedsuccessfully":"تمت إضافة المهمة بنجاح",
+    "ok":"موافق",
+    "en":"ar",
+    "please":""
+
 }

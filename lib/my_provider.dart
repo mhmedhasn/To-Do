@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,13 +8,12 @@ class MyProvider extends ChangeNotifier {
   ThemeMode thMode = ThemeMode.light;
 
 
-  String changeBackgroundImage() {
-    if (thMode == ThemeMode.light) {
-      return 'assets/images/background_app.png';
-    }
-    return 'assets/images/background_app_dark.png';
-  }
-
+  // String changeBackgroundImage() {
+  //   if (thMode == ThemeMode.light) {
+  //     return 'assets/images/background_app.png';
+  //   }
+  //   return 'assets/images/background_app_dark.png';
+  // }
 
   void changeLanguage(String lang) {
     if (language == lang) {
